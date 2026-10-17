@@ -1,0 +1,13 @@
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# 渲染验证产物（无头截图 / 裁剪图）
+check.png
+full.png
+tables.png
+calib.png
+*.tmp

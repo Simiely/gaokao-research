@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高考与大学考试新风向调研报告</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --ink:#e6ebf5;
+    --ink-2:#b3bfd2;
+    --ink-3:#828ea4;
+    --line:#2a3446;
+    --bg:#0d131d;
+    --card:#151d2b;
+    --accent:#ff5a75;
+    --accent-soft:#2e1a21;
+    --blue:#6fa8ff;
+    --blue-soft:#16233a;
+    --green:#4fd1a5;
+    --green-soft:#122a25;
+    --amber:#e8bc5e;
+    --amber-soft:#2a2314;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16px;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:940px;margin:0 auto;padding:0 22px 90px;}
+
+  /* ---------- 头部 ---------- */
+  header{
+    background:linear-gradient(135deg,#070c15 0%,#101d33 55%,#16294a 100%);
+    color:#eef3fb;
+    padding:56px 0 46px;
+    margin-bottom:0;
+    border-bottom:4px solid var(--accent);
+  }
+  header .wrap{padding-bottom:0;}
+  .kicker{
+    display:inline-block;
+    font-size:12.5px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:#8fb4e6;
+    border:1px solid rgba(143,180,230,.4);
+    padding:4px 12px;
+    border-radius:999px;
+    margin-bottom:20px;
+  }
+  header h1{
+    font-size:34px;
+    line-height:1.34;
+    margin:0 0 16px;
+    font-weight:700;
+    letter-spacing:.01em;
+    color:#f4f7fc;
+  }
+  header p.sub{
+    font-size:15px;
+    color:#a9bcd8;
+    margin:0;
+    max-width:720px;
+  }
+  .meta-row{
+    margin-top:26px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .meta-row span{
+    font-size:12.5px;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.18);
+    padding:4px 12px;
+    border-radius:6px;
+    color:#dbe7f7;
+  }
+
+  /* ---------- 通用块 ---------- */
+  section{margin-top:44px;}
+  h2{
+    font-size:23px;
+    margin:0 0 6px;
+    line-height:1.4;
+    padding-left:14px;
+    border-left:5px solid var(--accent);
+    font-weight:700;
+  }
+  h2 .num{
+    color:var(--accent);
+    font-size:15px;
+    font-weight:700;
+    margin-right:8px;
+    letter-spacing:.05em;
+  }
+  .h2-sub{
+    color:var(--ink-3);
+    font-size:14px;
+    margin:0 0 22px;
+    padding-left:19px;
+  }
+  h3{
+    font-size:17px;
+    margin:30px 0 10px;
+    color:var(--blue);
+    font-weight:700;
+  }
+  p{margin:0 0 14px;}
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:24px 26px;
+    box-shadow:0 1px 2px rgba(0,0,0,.35),0 14px 34px -24px rgba(0,0,0,.75);
+  }
+  .card + .card{margin-top:16px;}
+
+  /* ---------- TL;DR ---------- */
+  .tldr{
+    background:linear-gradient(180deg,#18202f,#141c29);
+    border:1px solid var(--line);
+    border-left:5px solid var(--accent);
+    border-radius:12px;
+    padding:26px 28px;
+    box-shadow:0 10px 30px -22px rgba(0,0,0,.9);
+  }
+  .tldr h2{border-left:none;padding-left:0;margin-bottom:14px;}
+  .tldr ol{margin:0;padding-left:22px;}
+  .tldr li{margin-bottom:10px;}
+  .tldr b{color:var(--accent);}
+
+  /* ---------- 表格 ---------- */
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14.5px;
+    background:var(--card);
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    margin:18px 0 8px;
+  }
+  th{
+    background:#1b2536;
+    color:#dfe7f4;
+    text-align:left;
+    padding:12px 14px;
+    font-weight:700;
+    font-size:13.5px;
+    letter-spacing:.02em;
+    border-bottom:1px solid var(--line);
+  }
+  td{
+    padding:12px 14px;
+    border-bottom:1px solid #222c3d;
+    vertical-align:top;
+    line-height:1.7;
+  }
+  tr:last-child td{border-bottom:none;}
+  tbody tr:nth-child(even){background:#121a27;}
+  td.old{color:#717d92;}
+  td.new{color:var(--ink);}
+  .arrow-cell{text-align:center;color:var(--accent);font-weight:700;width:34px;}
+
+  /* ---------- 能力卡片 ---------- */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px;}
+  @media(max-width:720px){.grid{grid-template-columns:1fr;}}
+  .cap{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:11px;
+    padding:18px 20px;
+    border-top:3px solid var(--blue);
+  }
+  .cap .idx{
+    font-size:12px;
+    font-weight:700;
+    color:#0d131d;
+    background:var(--blue);
+    border-radius:5px;
+    padding:2px 8px;
+    margin-right:9px;
+    letter-spacing:.04em;
+  }
+  .cap h4{margin:0 0 9px;font-size:15.5px;display:flex;align-items:center;font-weight:700;}
+  .cap p{font-size:13.8px;color:var(--ink-2);margin:0 0 8px;line-height:1.72;}
+  .cap .ev{font-size:12.5px;color:var(--ink-3);border-top:1px dashed var(--line);padding-top:8px;}
+
+  /* ---------- 标签 ---------- */
+  .tag{
+    display:inline-block;
+    font-size:11.5px;
+    font-weight:700;
+    padding:1px 7px;
+    border-radius:4px;
+    margin-right:5px;
+    vertical-align:1px;
+    letter-spacing:.03em;
+  }
+  .t-confirmed{background:var(--green-soft);color:var(--green);border:1px solid #2c5d4c;}
+  .t-disputed{background:var(--amber-soft);color:var(--amber);border:1px solid #5a4a1f;}
+  .t-exp{background:#1b2432;color:#8d99ae;border:1px solid #2c3648;}
+
+  /* ---------- 时间线 ---------- */
+  .tl{position:relative;margin:24px 0 0;padding-left:26px;}
+  .tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:linear-gradient(#ff5a75,#4a7fd4);}
+  .tl-item{position:relative;margin-bottom:20px;}
+  .tl-item::before{
+    content:"";position:absolute;left:-24px;top:8px;width:11px;height:11px;border-radius:50%;
+    background:#0d131d;border:3px solid var(--accent);
+  }
+  .tl-item .yr{font-weight:700;color:var(--accent);font-size:14px;margin-right:8px;}
+  .tl-item .txt{font-size:14.5px;color:var(--ink-2);}
+  .tl-item .txt b{color:var(--ink);}
+
+  /* ---------- 校准块 ---------- */
+  .calib{
+    background:linear-gradient(180deg,#1c1418,#151c29);
+    border:1px solid #3a2730;
+    border-radius:12px;
+    padding:24px 26px;
+  }
+  .calib .row{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start;}
+  .calib .row:last-child{margin-bottom:0;}
+  .calib .lab{
+    flex:0 0 96px;
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--accent);
+    padding-top:3px;
+    letter-spacing:.04em;
+  }
+  .calib .val{font-size:14.5px;color:var(--ink-2);flex:1;}
+  @media(max-width:640px){
+    .calib .row{flex-direction:column;gap:2px;}
+    .calib .lab{flex:none;}
+  }
+
+  .prob{
+    display:inline-block;
+    background:var(--accent-soft);
+    color:var(--accent);
+    font-weight:700;
+    border-radius:6px;
+    padding:2px 9px;
+    font-size:14px;
+  }
+
+  blockquote{
+    margin:16px 0;
+    padding:14px 20px;
+    background:#131c2b;
+    border-left:4px solid var(--blue);
+    border-radius:0 8px 8px 0;
+    color:var(--ink-2);
+    font-size:14.5px;
+  }
+  blockquote cite{display:block;font-size:12.5px;color:var(--ink-3);font-style:normal;margin-top:6px;}
+
+  .note{
+    background:var(--blue-soft);
+    border:1px solid #24374f;
+    border-radius:10px;
+    padding:16px 20px;
+    font-size:14px;
+    color:var(--ink-2);
+    margin:18px 0;
+  }
+  .note b{color:var(--blue);}
+
+  /* ---------- 来源 ---------- */
+  .src{
+    font-size:12.5px;
+    color:var(--ink-3);
+  }
+  .src a{color:var(--blue);text-decoration:none;border-bottom:1px dotted #44618c;}
+  ul.src-list{list-style:none;padding:0;margin:8px 0 0;counter-reset:s;}
+  ul.src-list li{
+    font-size:13px;
+    color:var(--ink-2);
+    padding:9px 0 9px 30px;
+    border-bottom:1px dashed var(--line);
+    position:relative;
+    line-height:1.6;
+  }
+  ul.src-list li:last-child{border-bottom:none;}
+  ul.src-list li::before{
+    counter-increment:s;content:"[" counter(s) "]";
+    position:absolute;left:0;top:9px;color:var(--accent);font-weight:700;font-size:12px;
+  }
+  ul.src-list a{color:var(--blue);text-decoration:none;border-bottom:1px dotted #44618c;}
+
+  footer{
+    margin-top:54px;
+    padding-top:22px;
+    border-top:1px solid var(--line);
+    font-size:12.5px;
+    color:var(--ink-3);
+    line-height:1.8;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">调研报告 · 证据分级版</div>
+    <h1>高考与大学考试的「新风向」<br>——高考究竟想选拔什么能力的人才？</h1>
+    <p class="sub">基于教育部政策原文、《中国高考评价体系》、教育部教育考试院官方试题评析及权威媒体解读的交叉验证。每条结论均标注证据等级与反方视角。</p>
+    <div class="meta-row">
+      <span>成稿日期 2026-10-16</span>
+      <span>方法：task-preflight 前置校准</span>
+      <span>来源：教育部 / 教育考试院 / 中国教育报 / 中国网</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ============ TL;DR ============ -->
+<section class="tldr">
+  <h2>结论速览</h2>
+  <ol>
+    <li><b>一句话概括</b>：高考正在从「筛出记得多、算得快的人」转向<b>「筛出会提问、能迁移、敢探究的人」</b>。官方定性是：从「解题」走向「解决问题」，从「知识记忆」走向「核心素养」。</li>
+    <li><b>2026 年两个硬动作</b>：命题明确「<b>反押题、反套路</b>」；招生「<b>严控大类招生、原则上按专业招生</b>」——即考什么变准，选人也变准。</li>
+    <li><b>高考想要的能力画像（8 项）</b>：① 三基扎实 ② 批判性思维 ③ 提问能力 ④ 探究与创新 ⑤ 真实情境问题解决 ⑥ 信息处理与逻辑推理 ⑦ 科学素养 + 人工智能素养（人机协同）⑧ 价值判断与家国情怀。</li>
+    <li><b>大学校内考试同步转向</b>：从「一考定成绩」转向<b>过程性评价 + 非标准答案考试</b>；北京大学自 2025 级起校内评价<b>不再使用绩点排名</b>。</li>
+    <li><b>最重要的隐性信号</b>：官方明说「人工智能时代，<b>『会问』常常比『会答』更重要</b>」——这是整轮改革最锋利的一句话。</li>
+  </ol>
+</section>
+
+<!-- ============ 1 ============ -->
+<section>
+  <h2><span class="num">01</span>政策主线：不是一年之风，是六年之势</h2>
+  <p class="h2-sub">这条改革线有清晰的官方文号与时间锚点，可逐条核查</p>
+
+  <div class="tl">
+    <div class="tl-item">
+      <span class="yr">2014</span>
+      <span class="txt">《国务院关于深化考试招生制度改革的实施意见》首次提出「深化高考内容改革」——<b>起点</b>。</span>
+    </div>
+    <div class="tl-item">
+      <span class="yr">2019</span>
+      <span class="txt">教育部考试中心发布<b>《中国高考评价体系》</b>，确立「一核四层四翼」，成为命题理论与实践的<b>总纲</b>，沿用至今。</span>
+    </div>
+    <div class="tl-item">
+      <span class="yr">2020</span>
+      <span class="txt">《深化新时代教育评价改革总体方案》发布，高考命题<b>转向「反固化、反刷题」</b>。</span>
+    </div>
+    <div class="tl-item">
+      <span class="yr">2024</span>
+      <span class="txt">《教育强国建设规划纲要（2024—2035 年）》提出在战略急需和新兴领域<b>探索国家拔尖创新人才培养新模式</b>。</span>
+    </div>
+    <div class="tl-item">
+      <span class="yr">2026.1</span>
+      <span class="txt">教育部印发<b>《关于做好 2026 年普通高校招生工作的通知》</b>，明确「反套路命题」「促进教考衔接」「严控大类招生」。</span>
+    </div>
+    <div class="tl-item">
+      <span class="yr">2026.4</span>
+      <span class="txt">教育部等五部门联合印发<b>《「人工智能 + 教育」行动计划》</b>，把 AI 素养写进人才培养的顶层部署。</span>
+    </div>
+    <div class="tl-item">
+      <span class="yr">2026.6</span>
+      <span class="txt">高考综合改革<b>收官之年</b>：29 个省份已实行新高考，西藏、新疆为最后一年「3+1」旧模式。全国报名人数 <b>1290 万</b>。</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section>
+  <h2><span class="num">02</span>高考命题的六个「转向」</h2>
+  <p class="h2-sub">把官方表述拆成可对照的对比表——左边是正在被淘汰的，右边是正在被奖励的</p>
+
+  <table>
+    <thead>
+      <tr><th style="width:20%">维度</th><th style="width:37%">正在退场（旧）</th><th class="arrow-cell"></th><th style="width:37%">正在上位（新）</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>知识观</b></td>
+        <td class="old">必备知识的记忆与再现</td>
+        <td class="arrow-cell">→</td>
+        <td class="new">在情境中理解知识的产生过程与底层逻辑</td>
+      </tr>
+      <tr>
+        <td><b>能力观</b></td>
+        <td class="old">解题速度、套路熟练度</td>
+        <td class="arrow-cell">→</td>
+        <td class="new">真实问题的分析与解决（「解题」→「解决问题」）</td>
+      </tr>
+      <tr>
+        <td><b>设问方式</b></td>
+        <td class="old">标准答案唯一、封闭设问</td>
+        <td class="arrow-cell">→</td>
+        <td class="new">开放设问、多路径探究、要求自证理由</td>
+      </tr>
+      <tr>
+        <td><b>素材来源</b></td>
+        <td class="old">教材例题改编、封闭题库</td>
+        <td class="arrow-cell">→</td>
+        <td class="new">科技前沿（脑机接口、具身智能）+ 社会治理真问题</td>
+      </tr>
+      <tr>
+        <td><b>考查重心</b></td>
+        <td class="old">会不会「答」（复现答案）</td>
+        <td class="arrow-cell">→</td>
+        <td class="new">会不会「问」（提出有价值的问题）</td>
+      </tr>
+      <tr>
+        <td><b>备考生态</b></td>
+        <td class="old">押题卷、题海战术</td>
+        <td class="arrow-cell">→</td>
+        <td class="new">回归教材主干、教考衔接、项目式/探究式学习</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <b>可核验的题目实例</b>（均出自教育部教育考试院 2026 年评析）：<br>
+    · 语文全国Ⅰ卷阅读题要求学生「<b>再提出两个问题并分别阐明提问的理由</b>」——考的不是读懂，是提问。<br>
+    · 语文全国Ⅱ卷第 21 题要学生思考大语言模型「<b>预测下一个词</b>」的运行逻辑是否成立——直接考 AI 原理认知。<br>
+    · 数学全国Ⅱ卷第 18 题因参数不同对应不同曲线类型，属<b>开放性问题</b>，需探索尝试才能定形。<br>
+    · 文综第 4—6 题用兰新铁路「<b>改直为弯</b>」实现「多拉快跑」的反直觉案例，考创新思维解真问题。<br>
+    · 语文全国Ⅰ卷把<b>名篇名句默写并入古诗阅读</b>，打通两个模块——考结构化理解，不是孤立背默。
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section>
+  <h2><span class="num">03</span>高考到底想选拔什么样的人才？</h2>
+  <p class="h2-sub">八项能力画像，每一项都对应官方原文中的可查表述</p>
+
+  <div class="grid">
+    <div class="cap">
+      <h4><span class="idx">01</span>基础扎实</h4>
+      <p>官方称「三基」考查：<b>基础知识、基本方法、基本能力</b>。明确杜绝偏题、怪题、超标题，减少繁琐计算。</p>
+      <div class="ev">依据：2026 命题「四个坚持」；数学全卷维持 19 题，留足思考时间</div>
+    </div>
+    <div class="cap">
+      <h4><span class="idx">02</span>批判性思维</h4>
+      <p>要求能辨识、比较、归纳语言与文学现象，并<b>有理有据地表达观点</b>，判断材料间是否互相印证。</p>
+      <div class="ev">依据：语文全国Ⅰ卷阅读Ⅲ第 14 题（判断材料四能否印证「西门豹治邺，民不敢欺」）</div>
+    </div>
+    <div class="cap">
+      <h4><span class="idx">03</span>提问能力</h4>
+      <p>这是本轮改革<b>最具标志性</b>的新能力项。「会问」比「会答」更重要，被官方直接写进评析。</p>
+      <div class="ev">依据：语文全国Ⅰ卷第 5 题；教育部教育考试院专家原话</div>
+    </div>
+    <div class="cap">
+      <h4><span class="idx">04</span>探究与创新意识</h4>
+      <p>在洞察学科本质的基础上<b>发现新问题、寻找新方法</b>，从定义出发做探究，破除套路化建模。</p>
+      <div class="ev">依据：数学全国Ⅰ卷第 14、19 题；文综兰新铁路情境题</div>
+    </div>
+    <div class="cap">
+      <h4><span class="idx">05</span>真实情境问题解决</h4>
+      <p>「加强项目式、探究式的真实情境问题设计」，强调<b>应用性、开放性、综合性</b>。</p>
+      <div class="ev">依据：2026 年教育部招生工作通知；理综第 27 题辉钼矿制备工业流程</div>
+    </div>
+    <div class="cap">
+      <h4><span class="idx">06</span>信息处理与逻辑推理</h4>
+      <p>从复杂材料中<b>提取信息、分析路径、基于原理做推理判断与计算</b>。</p>
+      <div class="ev">依据：理综第 27、34 题（奶牛品种改良 + 鉴定实验设计）</div>
+    </div>
+    <div class="cap">
+      <h4><span class="idx">07</span>科学素养 + 人工智能素养</h4>
+      <p>官方表述为「培养<b>人机协同能力和探究创新意识</b>」；高校侧进一步提出「专业 + AI 深度融合的双重编码能力」。</p>
+      <div class="ev">依据：2026 命题「四个坚持」第三条；《「人工智能 + 教育」行动计划》；两会代表建言</div>
+    </div>
+    <div class="cap">
+      <h4><span class="idx">08</span>价值判断与家国情怀</h4>
+      <p>「立德树人」是核心功能第一位。考题融入党的创新理论、中华优秀传统文化与<b>五育融合</b>（含「健康第一」）。</p>
+      <div class="ev">依据：语文全国Ⅰ卷作文「青年新语」；全国Ⅱ卷作文引《风俗通义》；英语卷睡眠/健康主题</div>
+    </div>
+  </div>
+
+  <blockquote>
+    「新的变化还有很多，比如强调知识与现实的紧密关联、注重科学素养和智能素养、在知识考查中渗透审美考问……这些变化的共通之处在于：考查的是学生的全面发展水平，体现了<b>从『知识记忆』到『核心素养』的育人重心迁移</b>。」
+    <cite>—— 国家教育考试专家咨询委员会委员 陈志文（中国青年网 2026.6.13 报道）</cite>
+  </blockquote>
+  <blockquote>
+    「<b>『贝多芬』（『背多分』谐音）的时代正走向终结</b>，这是多年高考改革持续发力的结果。」
+    <cite>—— 中国教育科学研究院研究员 储朝晖</cite>
+  </blockquote>
+</section>
+
+<!-- ============ 4 ============ -->
+<section>
+  <h2><span class="num">04</span>另一条线：大学（高校校内）考试的新风向</h2>
+  <p class="h2-sub">注意区分——这里说的是大学内部的课程考核，不是高考。它和高考改革是同一逻辑的上下半场</p>
+
+  <table>
+    <thead>
+      <tr><th style="width:24%">改革点</th><th style="width:38%">旧状态</th><th style="width:38%">新方向</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>考核定位</b></td>
+        <td class="old">终结性判决：一考定成绩、分数排名主导</td>
+        <td class="new">发展性路标：诊断与引导优先，指向「知识整合 / 复杂问题解决 / 高阶思维」</td>
+      </tr>
+      <tr>
+        <td><b>评价结构</b></td>
+        <td class="old">以期末一张卷为主</td>
+        <td class="new">过程性评价 + 终结性评价双轨，学期初公布「评价地图」</td>
+      </tr>
+      <tr>
+        <td><b>题型设计</b></td>
+        <td class="old">标准答案、识记类客观题为主</td>
+        <td class="new"><b>非标准答案考试</b>、论文、报告、作品等多元形式</td>
+      </tr>
+      <tr>
+        <td><b>反馈机制</b></td>
+        <td class="old">分数录入即终点，学生只知结果不明过程</td>
+        <td class="new">精准「学习诊断」，指出论证逻辑 / 批判思维 / 创新实践的具体短板</td>
+      </tr>
+      <tr>
+        <td><b>学生角色</b></td>
+        <td class="old">被评价者</td>
+        <td class="new">自我成长的负责者：自我评估 + 过程反思报告</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>标志性案例：北京大学</h3>
+  <p>北大党委副书记、教务长姜国华的公开表态是目前最激进的案例：自 <b>2025 级</b>学生起，校内各类学业评价活动<b>不再使用绩点排名</b>，大力强化过程性与发展性评价，<b>探索非标准答案考试</b>，考查创新能力、批判思维、解决问题能力与综合素养，「扭转『唯分数』倾向，引导学生从关注『分数』转向关注『能力』和『成长』」。</p>
+
+  <h3>高校拔尖创新人才培养对「未来人才」的定义</h3>
+  <div class="grid">
+    <div class="cap" style="border-top-color:#c8102e;">
+      <h4>清华大学 · 李路明校长</h4>
+      <p>「培养学生<b>通过提出问题来思考和理解这个时代</b>，这一点永远不变。」——与高考「会问比会答重要」完全呼应。</p>
+    </div>
+    <div class="cap" style="border-top-color:#c8102e;">
+      <h4>复旦大学 · 金力校长</h4>
+      <p>培养<b>「干细胞式」人才</b>：有多向分化潜力、能持续自我更新、能在未知领域快速建立认知框架。「如果大学还在培养『成品式』人才，那就是刻舟求剑。」</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>把两条线串起来看</b>：高考端（入学）在选「会提问、能迁移、敢探究」的人；大学端（在校）在用「过程性评价 + 非标准答案」继续养这种能力。这是一套<b>前后咬合的连续信号</b>，而不是孤立的两件事。
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section>
+  <h2><span class="num">05</span>理论底座：为什么是这些能力？</h2>
+  <p class="h2-sub">所有命题动作都挂在一个官方框架上，理解它才能预测下一步</p>
+
+  <div class="card">
+    <p><b>《中国高考评价体系》（2019，教育部考试中心研制）</b>——由 5 所高校 150 余位专家历时 3 年完成，是高考命题、评价与改革的理论基础和实践指南。它用三组词回答了考试的三个本源问题：</p>
+    <table style="margin-top:16px;">
+      <thead><tr><th style="width:16%">结构</th><th style="width:22%">内容</th><th>回答的问题</th></tr></thead>
+      <tbody>
+        <tr><td><b>一核</b></td><td>立德树人、服务选才、引导教学</td><td>为什么考？——价值方向</td></tr>
+        <tr><td><b>四层</b></td><td>核心价值、学科素养、关键能力、必备知识</td><td>考什么？——<b>核心素养落地的四条通道</b></td></tr>
+        <tr><td><b>四翼</b></td><td>基础性、综合性、应用性、创新性</td><td>怎么考？——<b>四个难度与形态维度</b></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:14px;margin-bottom:0;">另有第五个隐含要素：<b>情境</b>——作为承载考查内容的载体。这解释了为什么近年真题里「真实情境」越来越重，因为它是四层的<b>载体</b>，不是装饰。</p>
+  </div>
+
+  <p style="margin-top:20px;">值得注意的是，2026 年教育部《通知》的行文与这套体系高度一致：<b>「关键能力、学科素养和思维品质」</b>几乎逐字出现。这说明改革不是临场起意，而是既定框架的持续兑现。</p>
+</section>
+
+<!-- ============ 6 ============ -->
+<section>
+  <h2><span class="num">06</span>结论可信度校准</h2>
+  <p class="h2-sub">按 task-preflight Step 4：概率化 + 反方视角 + 基准率 + 可证伪预测</p>
+
+  <div class="calib">
+    <div class="row">
+      <div class="lab">核心结论</div>
+      <div class="val">「高考已系统性转向能力与素养导向，且 AI 素养、提问能力是新增项」——<span class="prob">可信度约 9 成</span>（基于教育部原文 + 考试院逐题评析 + 高校端同向改革的三重印证）。</div>
+    </div>
+    <div class="row">
+      <div class="lab">反方最可能<br>抓的破绽</div>
+      <div class="val">
+        ① <b>「不变」的部分被低估</b>——命题仍强调「总体难度稳定」「突出主干知识」「杜绝偏题怪题」，说明选拔的<b>基础筛选功能没被削弱</b>，分数竞争依然激烈。若只看「素养」叙事，会忽略高考仍是高强度排序工具。<br>
+        ② <b>官方话语 ≠ 课堂现实</b>——样本中已有县中抱怨「老师还不知道怎么教」，理念落地存在时滞与区域落差。<br>
+        ③ <b>「能力」难以测量</b>——开放性、非标准答案考试的<b>评分信度</b>是学界长期争议点，可能在实际操作中回退为「变相套路」。
+      </div>
+    </div>
+    <div class="row">
+      <div class="lab">基准率<br>（外部视角）</div>
+      <div class="val">类似的大型考试内容改革（如美国的 SAT 重设计、日本的中心考试改共同测试）通常需要 <b>5—10 年</b>才能在课堂层面观察到稳定变化，且常出现「命题先行、教学滞后」的错配。对照来看，中国这轮从 2014/2019 起算已约 <b>7 年</b>，处于「命题已变、课堂部分跟上」的中段，<b>不宜按「已完成」理解</b>。</div>
+    </div>
+    <div class="row">
+      <div class="lab">可证伪预测</div>
+      <div class="val">如果本结论为真，接下来应当观察到：<br>① 2027 年高考评析中<b>继续出现「提出问题 / 开放设问 / 人机协同」类表述</b>，且比重不降；<br>② 更多高校公布「取消绩点排名」或「非标准答案考试」的<b>制度化文件</b>（不只是北大个例）；<br>③ 各省模拟题的<b>真实情境题占比</b>上升，押题卷市场收缩被官方数据提及。<br><span class="src">若这三点在 2027 年高考后仍无出现，则本结论需下调。</span></div>
+    </div>
+  </div>
+
+  <h3>关键假设的证据等级</h3>
+  <table>
+    <thead><tr><th style="width:56%">断言</th><th style="width:16%">等级</th><th>依据类型</th></tr></thead>
+    <tbody>
+      <tr><td>高考转向能力/素养导向，有明确政策文本</td><td><span class="tag t-confirmed">CONFIRMED</span></td><td>教育部原文、考试院评析</td></tr>
+      <tr><td>2026 年强调「反押题反套路」「严控大类招生」</td><td><span class="tag t-confirmed">CONFIRMED</span></td><td>教育部《通知》原文</td></tr>
+      <tr><td>「提问能力」是新增考查项</td><td><span class="tag t-confirmed">CONFIRMED</span></td><td>评析原文 + 真题设问</td></tr>
+      <tr><td>大学端同步转向过程性/非标准答案评价</td><td><span class="tag t-confirmed">CONFIRMED</span></td><td>北大官方表态 + 多校实践报道</td></tr>
+      <tr><td>改革「已改变」日常教学与备考生态</td><td><span class="tag t-exp">经验/部分印证</span></td><td>媒体报道以典型案例为主，缺系统抽样数据</td></tr>
+      <tr><td>这一转向将长期稳定、不回摆</td><td><span class="tag t-disputed">推断/待观察</span></td><td>属推测，无长期追踪证据</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ 7 ============ -->
+<section>
+  <h2><span class="num">07</span>对「该怎么准备」的三条落地推论</h2>
+  <p class="h2-sub">从结论直接外推，供参考（属经验判断，非官方声明）</p>
+
+  <div class="card">
+    <p><b>1. 备考重心的位移</b>：教材主干与概念本质的权重在上升，刷题量的边际收益在下降。官方原话是「回归教材主干，而非盲目刷偏题」。</p>
+    <p><b>2. 需要刻意训练的「新技能」</b>：<i>提出有价值的问题</i>、<i>用证据自证观点</i>、<i>在陌生情境里定义问题</i>——这三项在旧题库里几乎练不到。</p>
+    <p style="margin-bottom:0;"><b>3. AI 素养不是选修</b>：从理解大模型的运行逻辑（语文卷已考）到「人机协同」，已被写入考试与人才培养的双重部署。</p>
+  </div>
+
+  <div class="note" style="background:#2a2314;border-color:#5a4a1f;">
+    <b>诚实提示</b>：以上第 1—3 条是基于政策与真题的<b>合理外推</b>，不是教育部文件的原话。请与前面的 CONFIRMED 条目区分看待。
+  </div>
+</section>
+
+<!-- ============ 来源 ============ -->
+<section>
+  <h2><span class="num">08</span>来源清单</h2>
+  <p class="h2-sub">全部为官方原文或权威媒体，可逐条点开核查</p>
+  <ul class="src-list">
+    <li>教育部《关于做好 2026 年普通高校招生工作的通知》（2026.1）— <a href="https://www.moe.gov.cn/srcsite/A15/moe_776/s3258/202601/t20260121_1427110.html" target="_blank">moe.gov.cn</a></li>
+    <li>《权威发布！2026 年高考命题与组考总体情况》（含命题「四个坚持」）— <a href="http://www.jyb.cn/rmtzcg/xwy/wzxw/202606/t20260607_2111488352.html" target="_blank">中国教育新闻网</a></li>
+    <li>教育部教育考试院专家评析 2026 年高考全国卷试题（逐题）— <a href="https://thepaper.cn/newsDetail_forward_33348297" target="_blank">澎湃新闻转载《中国教育报》</a></li>
+    <li>中国网《2026 高考：今年高考这四大变化需要关注》— <a href="https://www.china.com.cn/youth/2026-06/05/content_118532874.html" target="_blank">china.com.cn</a></li>
+    <li>中国青年网《高考，考的不仅仅是分数……2026 年高考新变化新趋势观察》— <a href="https://edu.youth.cn/wzlb/202606/t20260613_16712117.htm" target="_blank">edu.youth.cn</a></li>
+    <li>《中国高考评价体系》（教育部考试中心，2019，「一核四层四翼」）— <a href="https://statics.scnu.edu.cn/pics/maths/2020/0727/1595815908872340.pdf" target="_blank">PDF 全文</a></li>
+    <li>人民日报党媒平台·北大姜国华《破壁与重塑：面向未来的基础学科拔尖创新人才培养》— <a href="https://www.hubpd.com/#/detail?contentId=7493989779949610650" target="_blank">hubpd.com</a></li>
+    <li>人民网《不只为甄别评判，更为赋能成长》（大学期末考核改革）— <a href="https://edu.people.com.cn/BIG5/n1/2025/1230/c1006-40635328.html" target="_blank">people.com.cn</a></li>
+    <li>教育部《以「真问题」锻造人才「真本领」》（拔尖创新人才两会建言）— <a href="https://www.moe.gov.cn/jyb_xwfb/xw_zt/moe_357/2026/2026_zt03/lhjy/lhjj/lhjj_jkrytfz/202603/t20260309_1430340.html" target="_blank">moe.gov.cn</a></li>
+    <li>央广网《当课堂遇上 AI，教育正在发生怎样的改变？》（含清华李路明、复旦金力观点）— <a href="https://www.cnr.cn/jy/dj/20260413/t20260413_527583105.shtml" target="_blank">cnr.cn</a></li>
+    <li>中国教育报《以 OBE 教育理念引领学业评价改革》（非标准答案考试实践）— <a href="http://paper.jyb.cn/zgjyb/html/2025-11/28/content_144747_19083877.htm" target="_blank">jyb.cn</a></li>
+  </ul>
+</section>
+
+<footer>
+  <p><b>方法与边界声明</b>：本报告按 task-preflight 前置校准流程执行——先定成功标准与禁项、再取证、最后做结论可信度校准。所有 CONFIRMED 级断言均可通过上方来源原文核查；标注为「经验/推断」的条目为作者基于证据的合理外推，不代表官方立场。</p>
+  <p>结论校准压的是<b>误差</b>，不是<b>消除不确定性</b>。教育政策存在执行层滞后与区域差异，请以教育部及各省教育考试院最新公告为准。</p>
+  <p style="margin-bottom:0;">成稿：2026-10-16</p>
+</footer>
+
+</div>
+</body>
+</html>
