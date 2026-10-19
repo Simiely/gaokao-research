@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>核心版 · 高考的方向变了</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --ink:#e9eef7;
+    --ink-2:#aebbd0;
+    --ink-3:#7c8799;
+    --line:#27313f;
+    --bg:#0b1018;
+    --card:#141c28;
+    --accent:#ff5a75;
+    --accent-dim:#8c3446;
+    --blue:#6fa8ff;
+    --up:#4fd1a5;
+    --up-soft:#10261f;
+    --down:#6b7280;
+    --down-soft:#181d25;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- 顶部 ---------- */
+  header{
+    padding:38px 0 54px;
+    background:
+      radial-gradient(900px 380px at 78% -10%, rgba(255,90,117,.13), transparent 62%),
+      radial-gradient(700px 340px at 12% 0%, rgba(111,168,255,.10), transparent 60%),
+      #0b1018;
+    border-bottom:1px solid var(--line);
+  }
+  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px;}
+  .ver{
+    font-size:11.5px;letter-spacing:.16em;color:#ff8b9f;
+    border:1px solid rgba(255,90,117,.35);border-radius:999px;padding:3px 11px;
+    background:rgba(255,90,117,.06);
+  }
+  .topbar a{color:var(--ink-3);text-decoration:none;font-size:13px;border-bottom:1px dotted #3a4757;}
+  .topbar a:hover{color:var(--blue);}
+
+  h1{
+    font-size:47px;line-height:1.26;margin:0 0 20px;font-weight:800;letter-spacing:-.01em;
+  }
+  h1 .strike{
+    color:#5f6a7a;position:relative;white-space:nowrap;
+  }
+  h1 .strike::after{
+    content:"";position:absolute;left:-2px;right:-2px;top:54%;height:2px;
+    background:rgba(255,90,117,.82);transform:rotate(-1.2deg);border-radius:2px;
+  }
+  .lede{
+    font-size:27px;line-height:1.55;color:var(--ink);margin:0 0 22px;font-weight:500;
+  }
+  .lede b{color:var(--accent);font-weight:800;}
+  .sub{font-size:14.5px;color:var(--ink-3);margin:0;max-width:640px;}
+
+  /* ---------- 通用 ---------- */
+  section{padding:52px 0 0;}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px;}
+  .sec-num{font-size:12px;color:var(--accent);letter-spacing:.2em;font-weight:700;}
+  h2{font-size:21px;margin:0;font-weight:700;}
+  .sec-sub{color:var(--ink-3);font-size:13.5px;margin:0 0 24px;padding-left:0;}
+
+  /* ---------- 三个判断 ---------- */
+  .judge{display:grid;gap:12px;}
+  .j{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:20px 22px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;
+  }
+  .j .shift{font-size:16.5px;font-weight:700;margin-bottom:8px;line-height:1.5;}
+  .j .shift .from{color:#6f7a8c;text-decoration:line-through;font-weight:600;}
+  .j .shift .to{color:var(--accent);}
+  .j .basis{font-size:13px;color:var(--ink-3);line-height:1.65;}
+  .j .basis b{color:var(--ink-2);font-weight:600;}
+  .conf{text-align:right;flex:0 0 auto;}
+  .conf .n{font-size:22px;font-weight:800;color:var(--up);line-height:1;}
+  .conf .lab{font-size:10.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:4px;}
+
+  /* ---------- 能力迁移 ---------- */
+  .shift-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);}
+  .col{padding:20px 22px;}
+  .col.down{background:var(--down-soft);border-right:1px solid var(--line);}
+  .col.up{background:var(--up-soft);}
+  .col h3{margin:0 0 4px;font-size:13px;letter-spacing:.08em;font-weight:700;}
+  .col h3::before{
+    content:"";display:inline-block;width:0;height:0;
+    border-left:5px solid transparent;border-right:5px solid transparent;
+    margin-right:7px;vertical-align:2px;
+  }
+  .col.down h3::before{border-top:7px solid #8b94a3;}
+  .col.up h3::before{border-bottom:7px solid var(--up);}
+  .col.down h3{color:#8b94a3;}
+  .col.up h3{color:var(--up);}
+  .col .cap-line{font-size:11.5px;color:var(--ink-3);margin:0 0 16px;}
+  .item{padding:11px 0;border-top:1px solid rgba(255,255,255,.05);}
+  .item:first-of-type{border-top:none;}
+  .item .t{font-size:14.5px;font-weight:600;line-height:1.45;}
+  .item .d{font-size:12.5px;color:var(--ink-3);line-height:1.55;margin-top:3px;}
+  .col.down .t{color:#8d95a3;}
+  .col.up .t{color:#dff7ee;}
+  @media(max-width:700px){
+    .shift-grid{grid-template-columns:1fr;}
+    .col.down{border-right:none;border-bottom:1px solid var(--line);}
+    h1{font-size:33px;}
+    .lede{font-size:20px;}
+  }
+
+  .caution{
+    margin-top:12px;font-size:12.5px;color:var(--ink-3);
+    border-left:2px solid var(--accent-dim);padding-left:10px;line-height:1.7;
+  }
+
+  /* ---------- 动作 ---------- */
+  .acts{display:grid;gap:12px;}
+  .act{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:18px 22px;display:flex;gap:16px;align-items:flex-start;
+  }
+  .act .who{
+    flex:0 0 74px;font-size:12px;font-weight:700;color:var(--blue);
+    letter-spacing:.06em;padding-top:2px;
+  }
+  .act .what{font-size:14.5px;line-height:1.7;color:var(--ink-2);}
+  .act .what b{color:var(--ink);}
+
+  /* ---------- 验证 ---------- */
+  .verify{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);}
+  .v-head{
+    padding:14px 22px;background:#1a2230;border-bottom:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:center;font-size:12.5px;
+  }
+  .v-head b{color:var(--ink);font-size:13px;}
+  .v-head span{color:var(--ink-3);}
+  .v-row{display:grid;grid-template-columns:26px 1fr;gap:12px;padding:15px 22px;border-bottom:1px solid #1d2531;align-items:start;}
+  .v-row:last-child{border-bottom:none;}
+  .v-row .k{color:var(--accent);font-weight:700;font-size:13px;padding-top:1px;}
+  .v-row .q{font-size:14px;line-height:1.65;color:var(--ink-2);}
+  .v-row .q em{color:var(--ink-3);font-style:normal;font-size:12.5px;}
+
+  /* ---------- 页脚 ---------- */
+  footer{
+    margin-top:56px;padding:26px 0 70px;border-top:1px solid var(--line);
+    font-size:12.5px;color:var(--ink-3);line-height:1.9;
+  }
+  footer a{color:var(--blue);text-decoration:none;border-bottom:1px dotted #3d5a80;}
+  footer .big{
+    font-size:14.5px;color:var(--ink-2);margin-bottom:14px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <span class="ver">v1.1 · 核心版</span>
+      <a href="./index.html">查看完整报告 →</a>
+    </div>
+    <h1>高考不再奖励<br><span class="strike">知道答案的人</span></h1>
+    <p class="lede">开始奖励<b>能定义问题的人</b>。</p>
+    <p class="sub">政策文本、真题设问、高校评价三条独立证据线同向收敛。这不是押题，是方向——方向错了，努力会加倍浪费。</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- 01 三个判断 -->
+<section>
+  <div class="sec-head"><span class="sec-num">01</span><h2>三个已经发生的位移</h2></div>
+  <p class="sec-sub">不是预测，是 2026 年已经落地的变化</p>
+
+  <div class="judge">
+    <div class="j">
+      <div>
+        <div class="shift"><span class="from">知识存量</span> → <span class="to">认知增量</span></div>
+        <div class="basis">官方表述从「知识记忆」改为「核心素养」；命题要求理解<b>知识怎么产生的</b>，而非结论本身。</div>
+      </div>
+      <div class="conf"><div class="n">9</div><div class="lab">/ 10</div></div>
+    </div>
+
+    <div class="j">
+      <div>
+        <div class="shift"><span class="from">封闭设问</span> → <span class="to">开放探究</span></div>
+        <div class="basis">语文卷要求「再提出两个问题并说明理由」；数学出现参数不同、<b>需探索才能定形</b>的开放题。</div>
+      </div>
+      <div class="conf"><div class="n">9</div><div class="lab">/ 10</div></div>
+    </div>
+
+    <div class="j">
+      <div>
+        <div class="shift"><span class="from">总分匹配</span> → <span class="to">专业匹配</span></div>
+        <div class="basis">2026 年起严控大类招生、<b>原则上按专业招生</b>，专业组按关联度重组，调剂空间被压缩。</div>
+      </div>
+      <div class="conf"><div class="n">8</div><div class="lab">/ 10</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 能力迁移 -->
+<section>
+  <div class="sec-head"><span class="sec-num">02</span><h2>什么在贬值，什么在升值</h2></div>
+  <p class="sec-sub">相对权重变化，不是绝对归零——基础仍然是门票</p>
+
+  <div class="shift-grid">
+    <div class="col down">
+      <h3>边际收益在下降</h3>
+      <p class="cap-line">投入产出比正在变差</p>
+      <div class="item"><div class="t">套路熟练度</div><div class="d">题型识别 + 模板套用，遇到新情境即失效</div></div>
+      <div class="item"><div class="t">孤立记忆量</div><div class="d">不连成网的知识点，难以迁移</div></div>
+      <div class="item"><div class="t">纯计算速度</div><div class="d">可被工具替代的部分，命题已明确「减少繁琐计算」</div></div>
+      <div class="item"><div class="t">标准答案复现</div><div class="d">背下来就能得分的空间在收窄</div></div>
+    </div>
+    <div class="col up">
+      <h3>边际收益在上升</h3>
+      <p class="cap-line">越早开始，复利越久</p>
+      <div class="item"><div class="t">提问力</div><div class="d">从材料里找出关键问题，并说清为什么它关键</div></div>
+      <div class="item"><div class="t">迁移力</div><div class="d">把 A 情境的方法，用到从未见过的 B 情境</div></div>
+      <div class="item"><div class="t">结构化能力</div><div class="d">把杂乱信息压缩成一个能推演的框架</div></div>
+      <div class="item"><div class="t">人机协同判断力</div><div class="d">能判断 AI 输出哪里对、哪里在编</div></div>
+    </div>
+  </div>
+  <p class="caution">注意：这不是「不用背了」。基础扎实仍是入场券——官方同时强调「三基」和「杜绝偏题怪题」。变的是<b>基础之上靠什么拉开差距</b>。</p>
+</section>
+
+<!-- 03 动作 -->
+<section>
+  <div class="sec-head"><span class="sec-num">03</span><h2>所以，往哪走</h2></div>
+  <p class="sec-sub">三条可立刻执行的动作，按角色区分</p>
+
+  <div class="acts">
+    <div class="act">
+      <div class="who">学生</div>
+      <div class="what">把一部分刷题时间换成<b>「自己出题」</b>：读完一段材料，写下三个问题，再判断哪个最值得问、为什么。这是唯一能同时练到提问、结构化与迁移的动作。</div>
+    </div>
+    <div class="act">
+      <div class="who">家长</div>
+      <div class="what">少问「考了多少分」，多问<b>「今天你问了一个什么问题」</b>。分数是结果，提问是过程；只盯结果，会逼孩子回到最省力的复现路径。</div>
+    </div>
+    <div class="act">
+      <div class="who">教学 / 内容</div>
+      <div class="what">把知识点包装成<b>「待解决的冲突」</b>，而不是「待记忆的结论」。先给一个反直觉现象，再让学生自己发现需要什么工具——这正是真题现在的情境设计方式。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 验证 -->
+<section>
+  <div class="sec-head"><span class="sec-num">04</span><h2>怎么验证这个方向是对的</h2></div>
+  <p class="sec-sub">别信结论，信指标。以下三条任一持续不成立，方向判断就该下调</p>
+
+  <div class="verify">
+    <div class="v-head"><b>观察窗口：2027 年 6 月高考后</b><span>三条同时看，不看单条</span></div>
+    <div class="v-row">
+      <div class="k">01</div>
+      <div class="q">官方试题评析中，<b>「提出问题」「开放设问」「人机协同」</b>类表述是否继续出现且比重不降。<br><em>若消失或明显弱化 → 说明只是一年的话术，非结构转向</em></div>
+    </div>
+    <div class="v-row">
+      <div class="k">02</div>
+      <div class="q">是否有更多高校出台<b>取消绩点排名 / 非标准答案考试</b>的制度化文件，而不只是个别学校表态。<br><em>若停在个例 → 说明高校端未真正接棒</em></div>
+    </div>
+    <div class="v-row">
+      <div class="k">03</div>
+      <div class="q">各省模拟题中<b>真实情境题占比</b>是否上升，押题类产品是否被官方持续点名治理。<br><em>若模拟题回潮套路化 → 说明教学端在逆向拉扯</em></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="big">方向对了，努力才有复利。<br>方向错了，勤奋只是加速消耗。</p>
+  <p>本页是 <b>v1.0.0 完整版</b>的方向提炼，只保留判断与动作，论证与来源见 <a href="./index.html">完整报告</a>（8 章 · 11 条可核查来源 · 三级证据标注）。<br>
+  置信度为基于现有证据的主观校准，不是官方表态；「动作」部分为建议，非政策要求。</p>
+  <p style="margin-bottom:0;">v1.1 核心版 · 2026-10-20 · 基线 v1.0.0</p>
+</footer>
+
+</div>
+</body>
+</html>
