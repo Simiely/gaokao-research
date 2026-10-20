@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心法 · 当题目不再有标准答案</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --ink:#e9eef7;
+    --ink-2:#b0bccf;
+    --ink-3:#788394;
+    --line:#242e3c;
+    --bg:#0a0f16;
+    --card:#121a25;
+    --accent:#ff5a75;
+    --blue:#6fa8ff;
+    --gold:#d9b36c;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- 头部 ---------- */
+  header{
+    padding:40px 0 62px;
+    background:
+      radial-gradient(760px 340px at 82% -8%, rgba(217,179,108,.10), transparent 62%),
+      radial-gradient(680px 320px at 8% 4%, rgba(111,168,255,.08), transparent 60%),
+      #0a0f16;
+    border-bottom:1px solid var(--line);
+  }
+  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:46px;}
+  .ver{
+    font-size:11.5px;letter-spacing:.16em;color:var(--gold);
+    border:1px solid rgba(217,179,108,.32);border-radius:999px;padding:3px 11px;
+    background:rgba(217,179,108,.05);
+  }
+  .topbar .nav a{color:var(--ink-3);text-decoration:none;font-size:13px;margin-left:16px;border-bottom:1px dotted #37424f;}
+  .topbar .nav a:hover{color:var(--blue);}
+
+  h1{font-size:44px;line-height:1.3;margin:0 0 18px;font-weight:800;letter-spacing:-.01em;}
+  h1 em{font-style:normal;color:var(--gold);}
+  .lede{font-size:19px;line-height:1.75;color:var(--ink-2);margin:0 0 18px;max-width:660px;}
+  .lede b{color:var(--ink);}
+  .src-note{font-size:12.5px;color:var(--ink-3);margin:0;}
+  .src-note a{color:var(--blue);text-decoration:none;border-bottom:1px dotted #3d5a80;}
+
+  /* ---------- 通用 ---------- */
+  section{padding:56px 0 0;}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px;}
+  .sec-num{font-size:12px;color:var(--accent);letter-spacing:.2em;font-weight:700;}
+  h2{font-size:21px;margin:0;font-weight:700;}
+  .sec-sub{color:var(--ink-3);font-size:13.5px;margin:0 0 26px;}
+
+  /* ---------- 推导链 ---------- */
+  .chain{counter-reset:c;margin-top:6px;}
+  .step{
+    position:relative;padding:0 0 26px 42px;
+  }
+  .step:last-child{padding-bottom:0;}
+  .step::before{
+    counter-increment:c;content:counter(c);
+    position:absolute;left:0;top:1px;width:26px;height:26px;border-radius:50%;
+    background:#1a2432;border:1px solid var(--line);color:var(--ink-3);
+    font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;
+  }
+  .step::after{
+    content:"";position:absolute;left:13px;top:32px;bottom:6px;width:1px;background:var(--line);
+  }
+  .step:last-child::after{display:none;}
+  .step h3{margin:0 0 6px;font-size:16px;font-weight:700;line-height:1.5;}
+  .step p{margin:0;font-size:14px;color:var(--ink-3);line-height:1.75;}
+  .step p b{color:var(--ink-2);}
+
+  /* ---------- 原理块 ---------- */
+  .axiom{
+    margin-top:8px;padding:34px 32px;
+    background:linear-gradient(135deg,#171f2b,#121a25);
+    border:1px solid #2d3947;border-left:4px solid var(--gold);
+    border-radius:0 14px 14px 0;
+  }
+  .axiom .tag{font-size:11.5px;letter-spacing:.2em;color:var(--gold);margin-bottom:14px;}
+  .axiom .big{
+    font-size:26px;line-height:1.6;font-weight:700;margin:0 0 16px;color:#f2f6fc;
+  }
+  .axiom .big span{color:var(--gold);}
+  .axiom .small{font-size:13.5px;color:var(--ink-3);margin:0;line-height:1.8;}
+
+  /* ---------- 心法 ---------- */
+  .rule{
+    display:grid;grid-template-columns:52px 1fr;gap:20px;
+    padding:26px 0;border-top:1px solid var(--line);
+  }
+  .rule:first-of-type{border-top:none;padding-top:6px;}
+  .rule .no{
+    font-size:15px;font-weight:800;color:var(--accent);
+    letter-spacing:.04em;padding-top:3px;
+  }
+  .rule h3{margin:0 0 8px;font-size:18px;font-weight:700;line-height:1.5;}
+  .rule .core-line{
+    font-size:15px;color:#dbe4f0;margin:0 0 14px;line-height:1.75;
+    padding-left:12px;border-left:2px solid rgba(255,90,117,.4);
+  }
+  .rule .body{font-size:13.8px;color:var(--ink-3);line-height:1.8;margin:0 0 12px;}
+  .rule .body b{color:var(--ink-2);}
+  .check{
+    background:#101823;border:1px solid #1f2a38;border-radius:8px;
+    padding:10px 14px;font-size:13px;color:var(--ink-2);line-height:1.7;
+  }
+  .check b{color:var(--gold);font-weight:700;margin-right:6px;}
+  @media(max-width:640px){
+    .rule{grid-template-columns:1fr;gap:6px;}
+    h1{font-size:31px;}
+    .axiom .big{font-size:20px;}
+  }
+
+  /* ---------- 四问 ---------- */
+  .algo{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(max-width:700px){.algo{grid-template-columns:1fr;}}
+  .q{
+    background:var(--card);border:1px solid var(--line);border-radius:11px;padding:20px 20px;
+  }
+  .q .n{font-size:11px;letter-spacing:.16em;color:var(--accent);margin-bottom:9px;}
+  .q .t{font-size:15px;font-weight:700;margin-bottom:7px;line-height:1.55;}
+  .q .d{font-size:13px;color:var(--ink-3);line-height:1.7;}
+
+  /* ---------- 边界 ---------- */
+  .bounds{
+    border:1px solid var(--line);border-radius:12px;background:var(--card);
+    padding:6px 22px;
+  }
+  .b-row{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:15px 0;border-bottom:1px solid #1c2531;}
+  .b-row:last-child{border-bottom:none;}
+  .b-row .k{font-size:13px;color:var(--accent);font-weight:700;}
+  .b-row .v{font-size:13.5px;color:var(--ink-3);line-height:1.75;}
+  @media(max-width:640px){.b-row{grid-template-columns:1fr;gap:4px;}}
+
+  /* ---------- 结尾 ---------- */
+  .closing{
+    margin-top:56px;padding:38px 32px;border-radius:14px;
+    background:linear-gradient(160deg,#1a1a20,#121821);
+    border:1px solid #2b2b33;text-align:center;
+  }
+  .closing p{font-size:20px;line-height:1.75;margin:0;color:#eef3fa;font-weight:600;}
+  .closing p span{color:var(--gold);}
+
+  footer{
+    margin-top:34px;padding:22px 0 70px;font-size:12.5px;color:var(--ink-3);line-height:1.9;
+    border-top:1px solid var(--line);
+  }
+  footer a{color:var(--blue);text-decoration:none;border-bottom:1px dotted #3d5a80;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <span class="ver">v1.2 · 心法版</span>
+      <span class="nav">
+        <a href="./core.html">方向版</a>
+        <a href="./index.html">完整版</a>
+      </span>
+    </div>
+    <h1>当题目不再有标准答案，<br>你靠<em>什么</em>作答。</h1>
+    <p class="lede">这不是一份备考清单。清单会过期，题型会变，政策会改。<b>这里只给一套推导方式——从考试的本质出发，推出无论遇到什么题都不会慌的判断准则。</b></p>
+    <p class="src-note">基于 <a href="./core.html">v1.1 方向版</a> 的三个位移与 <a href="./index.html">v1.0.0 完整版</a> 的证据链。</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- 01 原点 -->
+<section>
+  <div class="sec-head"><span class="sec-num">01</span><h2>先把「考试」这个词拆到底</h2></div>
+  <p class="sec-sub">不理解考试在做什么，就只能追着题型跑</p>
+
+  <div class="chain">
+    <div class="step">
+      <h3>考试不是测知识，是在做预测</h3>
+      <p>它用几小时的有限样本，预测你未来四年、乃至十年的表现。<b>预测，才是它的真实功能</b>；分数只是预测结果的刻度。</p>
+    </div>
+    <div class="step">
+      <h3>预测必须借道「代理指标」</h3>
+      <p>「未来能不能成事」无法直接测。于是考试找一个<b>现在可测、且与未来相关</b>的东西来代替——这就是代理指标。知识复现，曾经是最好的代理。</p>
+    </div>
+    <div class="step">
+      <h3>代理一旦被破解，就必须更换</h3>
+      <p>当所有人都能通过刷题把代理指标刷满，它就不再区分人。此时它测的不再是能力，而是<b>训练时长</b>。信号失效，评价体系被迫换代理。</p>
+    </div>
+    <div class="step">
+      <h3>AI 把旧代理的边际成本打到接近零</h3>
+      <p>记得多、算得快、写得规范——这些曾经稀缺的能力，现在<b>调用成本趋近于零</b>。稀缺性消失，筛选价值随之消失。</p>
+    </div>
+    <div class="step">
+      <h3>于是只剩下一条路：考「不可外包」的部分</h3>
+      <p>凡是能交给工具的，都会退出筛选；凡是必须由人承担的，才会被奖励。<b>这就是 2026 年命题转向的底层动因</b>，不是风格偏好。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 原理 -->
+<section>
+  <div class="sec-head"><span class="sec-num">02</span><h2>第一性原理</h2></div>
+  <p class="sec-sub">一句话，可推导出后面全部心法</p>
+
+  <div class="axiom">
+    <div class="tag">AXIOM · 不可再分</div>
+    <p class="big">凡是能被工具接手的，都会<span>贬值</span>；<br>凡是必须由人承担的，才会<span>升值</span>。</p>
+    <p class="small">「必须由人承担」只有四件事：<b>定义问题</b>（决定算什么）、<b>判断价值</b>（决定哪个答案值得要）、<b>承担后果</b>（为选择负责）、<b>约束下取舍</b>（资源有限时的权衡）。<br>AI 能给你一百个答案，但不能替你决定要哪个，也不能替你承担选错的代价。这就是人的位置，也是考试现在要测的东西。</p>
+  </div>
+</section>
+
+<!-- 03 心法 -->
+<section>
+  <div class="sec-head"><span class="sec-num">03</span><h2>五条心法</h2></div>
+  <p class="sec-sub">每条都是判断准则，不是操作步骤——所以题型怎么变都用得上</p>
+
+  <div class="rule">
+    <div class="no">心法一</div>
+    <div>
+      <h3>看穿代理，练底层</h3>
+      <p class="core-line">考试给你的永远是「代理」：提问、开放题、情境题，都是「定义问题能力」的代理。追代理会失效，练底层才能迁移。</p>
+      <p class="body">背「提问的三个句式」，遇到新题型就废；练「怎么判断什么问题是关键的」，任何材料都能用。<b>代理是投影，底层是物体</b>——投影会随光源变化，物体不会。判断自己是在练哪一种，看一件事：换个问法，你还剩多少。</p>
+      <div class="check"><b>自检</b>我现在练的，是这道题的做法，还是这类问题的看法？</div>
+    </div>
+  </div>
+
+  <div class="rule">
+    <div class="no">心法二</div>
+    <div>
+      <h3>先分「可外包 / 不可外包」，再决定投入</h3>
+      <p class="core-line">任何任务到手，第一件事不是开始做，而是切一刀：哪部分工具能代劳，哪部分只能我来。</p>
+      <p class="body">工具能做的，会用就行，不必练到精通——练到精通是在给一个正在贬值的东西加仓。<b>工具不能做的，才是你的仓位</b>。这一刀切得准，努力就不会投错方向；切不准，越勤奋越偏。</p>
+      <div class="check"><b>自检</b>这件事如果全交给 AI，剩下必须由我做的，是什么？</div>
+    </div>
+  </div>
+
+  <div class="rule">
+    <div class="no">心法三</div>
+    <div>
+      <h3>把「找答案」改成「做决定」</h3>
+      <p class="core-line">判断力不能通过看答案获得，只能通过做判断、并承担结果获得。看一百道解析，不如自己做十次取舍。</p>
+      <p class="body">每遇到一个问题，别急着问「答案是什么」，先问<b>「如果必须选一个，我选哪个，凭什么」</b>。答案可以查，理由查不到——理由才是你的。开放题真正的难点从来不是不会算，而是不敢在没有标准答案时下判断。</p>
+      <div class="check"><b>自检</b>我能不能说出三个理由，解释为什么是这个，而不是那个？</div>
+    </div>
+  </div>
+
+  <div class="rule">
+    <div class="no">心法四</div>
+    <div>
+      <h3>迁移是唯一的学习证据</h3>
+      <p class="core-line">原题会做，只叫记住；换个情境还能用，才叫学会。熟练会折旧，框架会增值。</p>
+      <p class="body">题型、工具、政策都会变，<b>唯有「这一类问题该怎么看」不会变</b>。所以每学完一个方法，强制追问：它还能用在哪三个完全不同的地方？答不出来，说明你学的是这道题，不是这个方法。</p>
+      <div class="check"><b>自检</b>把背景、数字、问法全换掉，我还能用吗？</div>
+    </div>
+  </div>
+
+  <div class="rule">
+    <div class="no">心法五</div>
+    <div>
+      <h3>错误是「假设的暴露」，不是「能力的判决」</h3>
+      <p class="core-line">错题不是「这题我不会」，是「我某一步的某个假设错了」。找到那个假设，比记住正确答案值钱十倍。</p>
+      <p class="body">把错误当判决，人会躲；把错误当数据，人会改。<b>前者产生焦虑，后者产生校准</b>。开放题时代，错误是常态——因为没有唯一解，试错本身就是解题过程的一部分。</p>
+      <div class="check"><b>自检</b>我错在哪一步？那一步依赖了什么我没验证的假设？</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 四问 -->
+<section>
+  <div class="sec-head"><span class="sec-num">04</span><h2>遇到任何新题，走这四问</h2></div>
+  <p class="sec-sub">不需要记住题型，只需要记住提问的顺序</p>
+
+  <div class="algo">
+    <div class="q">
+      <div class="n">第一问</div>
+      <div class="t">它在考哪种「不可外包」？</div>
+      <div class="d">定义问题、判断价值、承担后果、约束取舍——四选一或组合。认出考的是哪一种，就知道该调动什么，而不是先想套哪个模板。</div>
+    </div>
+    <div class="q">
+      <div class="n">第二问</div>
+      <div class="t">我有什么可迁移的框架？</div>
+      <div class="d">不是「我做过类似的题吗」，而是「我看过类似的结构吗」。结构相同、情境不同，才是真正的迁移。</div>
+    </div>
+    <div class="q">
+      <div class="n">第三问</div>
+      <div class="t">我的关键假设是什么？</div>
+      <div class="d">任何解法都建立在假设上。把假设显式写出来，再问「如果它不成立，会怎样」——这一步能救回大部分隐蔽的错。</div>
+    </div>
+    <div class="q">
+      <div class="n">第四问</div>
+      <div class="t">我能不能讲清「为什么」？</div>
+      <div class="d">讲不出为什么，说明只是猜对了。能讲清，才说明真的掌握；而开放题的评分，恰恰看的就是这个「为什么」。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 边界 -->
+<section>
+  <div class="sec-head"><span class="sec-num">05</span><h2>心法的边界</h2></div>
+  <p class="sec-sub">说清不适用什么，比说清适用什么更重要</p>
+
+  <div class="bounds">
+    <div class="b-row"><div class="k">不替代基础</div><div class="v">基础是门票，心法是分差。没有基础，心法无处落地；只有基础，心法决定上限。官方同时强调「三基」和「素养」，两者不是替代关系。</div></div>
+    <div class="b-row"><div class="k">不保证分数</div><div class="v">它提高的是「遇到没见过的题不慌」的概率，不是「一定拿高分」的承诺。心法降低的是不确定性带来的损失，不是消除不确定性。</div></div>
+    <div class="b-row"><div class="k">有适用边界</div><div class="v">纯记忆型任务（默写、单词、公式）仍需重复训练，心法在这里帮不上忙。判断哪些任务该用哪种方式，本身就是心法二的运用。</div></div>
+    <div class="b-row"><div class="k">不能速成</div><div class="v">判断力靠一次次决策累积，不靠一次顿悟。心法的作用是让每一次练习都落在正确的位置上，而不是让练习变少。</div></div>
+  </div>
+</section>
+
+<div class="closing">
+  <p>你不需要预测下一道题。<br>你只需要成为<span>那种无论出什么题，都能定义问题的人</span>。</p>
+</div>
+
+<footer>
+  <p>本页是方向版（v1.1）的<b>方法论下沉</b>：方向告诉你往哪走，心法告诉你为什么这么走、以及换一条路时怎么重新推导。<br>
+  心法来自对考试机制的推导，不是官方表述；「四问」为认知工具，非评分标准。证据链见 <a href="./index.html">完整版</a>，方向判断见 <a href="./core.html">方向版</a>。</p>
+  <p style="margin-bottom:0;">v1.2 心法版 · 2026-10-20 · 基线 v1.0.0</p>
+</footer>
+
+</div>
+</body>
+</html>
