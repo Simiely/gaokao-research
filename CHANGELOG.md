@@ -5,6 +5,14 @@
 
 **版本策略**：`v1.0.0` 为冻结基线（tag 已打，内容不再改动）；此后按 `1.x` 增量迭代，`2.0.0` 留给结构性重写（如引入多年度对比框架）。
 
+## [1.2.1] - 2026-11-18
+
+### 维护
+
+- 接入 repo-kit 机器层（`link-only`，kit 2.8.0 / spec 2.1.3）：`tools/repo-kit/`、`schema/taxonomy.json`、`schema/kit.lock.json`、`.github/workflows/repo-check.yml`
+- 只查 Markdown 的链接 / 锚点与版本锁；`index.html`、`core.html`、`principles.html` 与报告结论均未改动
+- README「维护流程」补一行：三个 HTML 的内部链接不在 repo-kit 检查范围，需要时用 `lychee --offline` 单独验
+
 ## [1.2.0] - 2026-10-20
 
 ### 新增

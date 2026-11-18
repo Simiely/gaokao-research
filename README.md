@@ -91,6 +91,7 @@ python3 -m http.server 8000
 | 踩坑并解决 | 写进 `DEVELOPMENT.md`「关键问题与方案」，一坑一篇 |
 | 形成跨项目通用经验 | 提炼到 knowledge-base `用户库/解决方案/` |
 | 每次推送后 | 更新 `AGENTS.md` 顶部文档基线（日期 + commit hash） |
+| 改完 HTML 想验链接 | `repo-kit` 只查 `.md`；三个 HTML 的内部链接用 `lychee --offline '*.html'` 单独跑（未接 CI） |
 
 拆分阈值：`README.md` > 150 行、`AGENTS.md` > 150 词、`DEVELOPMENT.md` > 200 行时，才拆出 `docs/` 或 `rules/`。**不提前建目录。**
 
